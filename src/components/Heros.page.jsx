@@ -18,7 +18,7 @@ function Heros() {
 
   return (
     <>
-      <h2>Super Heroes Page</h2>
+      <h2>Heroes Page</h2>
       {data.map((hero) => {
         // eslint-disable-next-line react/jsx-key
         return <div>{hero.name}</div>;
