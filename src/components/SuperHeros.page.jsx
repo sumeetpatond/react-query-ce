@@ -1,6 +1,12 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 function SuperHeros() {
+  const onSuccess = (data) => {
+    console.log("successfully fetched: ", data);
+  };
+  const onError = (error) => {
+    console.log("error fetching: ", error);
+  };
   const { isLoading, data, isError, error, refetch } = useQuery(
     "superheroes",
     () => axios.get("http://localhost:4000/superheroes"),
@@ -10,7 +16,9 @@ function SuperHeros() {
       // refetchOnMount: true,
       // refetchOnWindowFocus: true,
       // refetchInterval: false,
-      enabled: false,
+      // enabled: false,
+      onSuccess,
+      onError,
     }
   );
   if (isLoading) {
