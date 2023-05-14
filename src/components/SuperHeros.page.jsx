@@ -1,15 +1,16 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 function SuperHeros() {
-  const { isLoading, data, isError, error } = useQuery(
+  const { isLoading, data, isError, error, refetch } = useQuery(
     "superheroes",
     () => axios.get("http://localhost:4000/superheroes"),
     {
-      staleTime: 0,
-      cacheTime: 300000,
-      refetchOnMount: true,
-      refetchOnWindowFocus: true,
-      refetchInterval: false,
+      // staleTime: 0,
+      // cacheTime: 300000,
+      // refetchOnMount: true,
+      // refetchOnWindowFocus: true,
+      // refetchInterval: false,
+      enabled: false,
     }
   );
   if (isLoading) {
@@ -23,6 +24,7 @@ function SuperHeros() {
   return (
     <>
       <h2>Heroes Page</h2>
+      <button onClick={() => refetch()}>Fetch Heroes</button>
       {data?.data.map((hero) => {
         // eslint-disable-next-line react/jsx-key
         return <div>{hero.name}</div>;
