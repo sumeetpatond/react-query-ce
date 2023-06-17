@@ -1,5 +1,5 @@
-import axios from "axios";
-import { useQuery } from "react-query";
+import useSuperheroes from "../hooks/useSuperheroes";
+
 function SuperHeros() {
   const onSuccess = (data) => {
     console.log("successfully fetched: ", data);
@@ -7,19 +7,9 @@ function SuperHeros() {
   const onError = (error) => {
     console.log("error fetching: ", error);
   };
-  const { isLoading, data, isError, error, refetch } = useQuery(
-    "superheroes",
-    () => axios.get("http://localhost:4000/superheroes"),
-    {
-      // staleTime: 0,
-      // cacheTime: 300000,
-      // refetchOnMount: true,
-      // refetchOnWindowFocus: true,
-      // refetchInterval: false,
-      // enabled: false,
-      onSuccess,
-      onError,
-    }
+  const { isLoading, data, isError, error, refetch } = useSuperheroes(
+    onSuccess,
+    onError
   );
   if (isLoading) {
     return <h2>Loading...</h2>;
@@ -33,9 +23,9 @@ function SuperHeros() {
     <>
       <h2>Heroes Page</h2>
       <button onClick={() => refetch()}>Fetch Heroes</button>
-      {data?.data.map((hero) => {
+      {data?.map((heroName) => {
         // eslint-disable-next-line react/jsx-key
-        return <div>{hero.name}</div>;
+        return <div>{heroName}</div>;
       })}
     </>
   );
