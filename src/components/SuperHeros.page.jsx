@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useSuperheroes from "../hooks/useSuperheroes";
 
 function SuperHeros() {
@@ -23,9 +24,13 @@ function SuperHeros() {
     <>
       <h2>Heroes Page</h2>
       <button onClick={() => refetch()}>Fetch Heroes</button>
-      {data?.map((heroName) => {
+      {data?.data?.map((hero) => {
         // eslint-disable-next-line react/jsx-key
-        return <div>{heroName}</div>;
+        return (
+          <div key={hero.id}>
+            <Link to={`/superheroes/${hero.id}`}>{hero.name}</Link>
+          </div>
+        );
       })}
     </>
   );

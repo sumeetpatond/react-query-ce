@@ -13,7 +13,7 @@ const useSuperheroes = (onSuccess, onError) => {
     // enabled: false,
     onSuccess,
     onError,
-    select: (data) => data?.data?.map((hero) => hero.name),
+    // select: (data) => data?.data?.map((hero) => hero.name),
   });
 };
 

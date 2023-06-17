@@ -5,6 +5,7 @@ import "./App.css";
 import HomePage from "./components/Home.page";
 import Heros from "./components/Heros.page";
 import SuperHerosPage from "./components/SuperHeros.page";
+import SuperHeroPage from "./components/SuperHero.page";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ function App() {
             </ul>
           </nav>
           <Routes>
+            <Route path="/superheroes/:heroId" element={<SuperHeroPage />} />
             <Route path="/superheroes" element={<SuperHerosPage />} />
             <Route path="/heroes" element={<Heros />} />
             <Route path="/" element={<HomePage />} />
