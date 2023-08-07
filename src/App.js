@@ -7,6 +7,7 @@ import Heros from "./components/Heros.page";
 import SuperHerosPage from "./components/SuperHeros.page";
 import SuperHeroPage from "./components/SuperHero.page";
 import MultipleQueriesPage from "./components/MultipleQueries.page";
+import DependentQueries from "./components/DependentQueries";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,10 @@ function App() {
             <Route
               path="/multiplequeries"
               element={<MultipleQueriesPage heroIds={[1, 2]} />}
+            />
+            <Route
+              path="/dependentqueries"
+              element={<DependentQueries emailid={"a@a.com"} />}
             />
             <Route path="/superheroes/:heroId" element={<SuperHeroPage />} />
             <Route path="/superheroes" element={<SuperHerosPage />} />
